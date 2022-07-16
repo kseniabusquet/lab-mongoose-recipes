@@ -17,7 +17,34 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+
+    //Iteration 2
+    const omeletteRecipe =  {
+      title: 'Omelette with cheese and tomatoes',
+      level: 'Easy Peasy',
+      ingredients: ['eggs', 'cheese', 'milk', 'salt', 'tomatoes', 'butter'],
+      cuisine: 'European',
+      dishType: 'breakfast',
+      duration: 15,
+      creator: 'Ksenia'
+    }
+
+    Recipe.create(omeletteRecipe)
+      .then (omeletteRecipe => {
+        console.log(`Created ${omeletteRecipe} recipe`)
+      })
+      .catch (err => console.log(err));
+
+      //Iteration 3
+
+      Recipe.insertMany(data)
+       .then(recipes => {
+        recipes.forEach(recipe => console.log(recipe.title));
+      })
+       .catch(err => console.log(err));
+
   })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
