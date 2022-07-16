@@ -32,6 +32,10 @@ mongoose
     Recipe.create(omeletteRecipe)
       .then (omeletteRecipe => {
         console.log(`Created ${omeletteRecipe} recipe`)
+
+        mongoose.disconnect()
+        .then(response => console.log('Disconnected successfully'))
+        .catch (err => console.log(err)) 
       })
       .catch (err => console.log(err));
 
@@ -42,11 +46,26 @@ mongoose
         recipes.forEach(recipe => console.log(recipe.title));
 
         Recipe.findOneAndUpdate({title:'Rigatoni alla Genovese'}, {$set: {duration: 100}})
-        .then(recipe => console.log('Updated successfully'))
+        .then(recipe => {
+
+          console.log('Updated successfully')
+
+          mongoose.disconnect()
+          .then(response => console.log('Disconnected successfully'))
+          .catch (err => console.log(err)) 
+        })
         .catch(err => console.log(err));
 
         Recipe.deleteOne({title:'Carrot Cake'})
-        .then(recipe => console.log('Removed successfully'))
+        .then(recipe => {
+          
+          console.log('Removed successfully')
+
+          mongoose.disconnect()
+          .then(response => console.log('Disconnected successfully'))
+          .catch (err => console.log(err)) 
+        })
+
         .catch(err => console.log(err));
       })
        .catch(err => console.log(err));
@@ -54,14 +73,28 @@ mongoose
        //Iteration 4
 
        Recipe.findOneAndUpdate({title:'Rigatoni alla Genovese'}, {$set: {duration: 100}})
-        .then(recipe => console.log('Updated successfully'))
+        .then(recipe => {
+          console.log('Updated successfully')
+
+          mongoose.disconnect()
+            .then(response => console.log('Disconnected successfully'))
+            .catch (err => console.log(err)) 
+        })
         .catch(err => console.log(err));
 
         //Iteration 5
 
       Recipe.deleteOne({title:'Carrot Cake'})
-      .then(recipe => console.log('Removed successfully'))
-      .catch(err => console.log(err));
+       .then(recipe => {
+        console.log('Removed successfully')
+
+        mongoose.disconnect()
+        .then(response => console.log('Disconnected successfully'))
+        .catch (err => console.log(err)) 
+       })
+
+       .catch(err => console.log(err));
+
   })
 
   .catch(error => {
