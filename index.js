@@ -40,9 +40,28 @@ mongoose
       Recipe.insertMany(data)
        .then(recipes => {
         recipes.forEach(recipe => console.log(recipe.title));
+
+        Recipe.findOneAndUpdate({title:'Rigatoni alla Genovese'}, {$set: {duration: 100}})
+        .then(recipe => console.log('Updated successfully'))
+        .catch(err => console.log(err));
+
+        Recipe.deleteOne({title:'Carrot Cake'})
+        .then(recipe => console.log('Removed successfully'))
+        .catch(err => console.log(err));
       })
        .catch(err => console.log(err));
 
+       //Iteration 4
+
+       Recipe.findOneAndUpdate({title:'Rigatoni alla Genovese'}, {$set: {duration: 100}})
+        .then(recipe => console.log('Updated successfully'))
+        .catch(err => console.log(err));
+
+        //Iteration 5
+
+      Recipe.deleteOne({title:'Carrot Cake'})
+      .then(recipe => console.log('Removed successfully'))
+      .catch(err => console.log(err));
   })
 
   .catch(error => {
